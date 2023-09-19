@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IAssetService
     {
-        List<Asset> GetAssets();
+        IQueryable<Asset> GetAssets();
 
         int AddAssets(AssetDTO asset);
 

@@ -15,7 +15,7 @@ namespace AssetManagementConsole.Managers
         {
             apiObj = new ApiCall<T>(ep);
         }
-        public List<T> GenerateReport()
+        public IQueryable<T> GenerateReport()
         {
             return apiObj.GetData();
         }

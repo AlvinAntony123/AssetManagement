@@ -25,22 +25,22 @@ namespace AssetManagementConsole.FunctionHandlers
             allocatedCabinManager = new ReportManager<CabinAllocatedViewModel>("api/report/cabinallocated");
         }
 
-        public List<UnallocatedViewModel> GetUnallocatedSeatList()
+        public IQueryable<UnallocatedViewModel> GetUnallocatedSeatList()
         {
             return unallocatedSeatManager.GenerateReport();
         }
 
-        public List<CabinUnallocatedViewModel> GetUnallocatedCabinList()
+        public IQueryable<CabinUnallocatedViewModel> GetUnallocatedCabinList()
         {
             return unallocatedCabinManager.GenerateReport();
         }
 
-        public List<Overview> GetAllocatedSeatList()
+        public IQueryable<Overview> GetAllocatedSeatList()
         {
             return alloactedSeatManager.GenerateReport();
         }
 
-        public List<CabinAllocatedViewModel> GetAllocatedCabinList()
+        public IQueryable<CabinAllocatedViewModel> GetAllocatedCabinList()
         {
             return allocatedCabinManager.GenerateReport();
         }
@@ -97,7 +97,7 @@ namespace AssetManagementConsole.FunctionHandlers
             {
                 Console.Write("Enter the floor number by which you want to search: ");
                 var floorNo = Convert.ToInt16(Console.ReadLine());
-                var facilityOnFloorList = facilityHandler.GetFacilityList().Where(x => x.FaciltyFloor ==  floorNo).ToList();
+                var facilityOnFloorList = facilityHandler.GetFacilityList().Where(x => x.FaciltyFloor ==  floorNo);
 
                 Console.WriteLine("Facilities On Floor List:");
                 foreach (FacilityViewModel facility in facilityOnFloorList)

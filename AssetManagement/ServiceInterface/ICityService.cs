@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface ICityService
     {
-        List<City> GetCities();
+        IQueryable<City> GetCities();
 
         int AddCities(CityDTO city);
     }

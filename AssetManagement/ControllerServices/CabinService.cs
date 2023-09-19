@@ -65,7 +65,7 @@ namespace AssetManagementAPI.ControllerServices
                         }
                     }
                 }
-                else throw new Exception("Cabin doe not exist");
+                else throw new Exception("Cabin does not exist");
                 _context.Save();
             }
         }
@@ -99,10 +99,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Cabin> GetCabins()
+        public IQueryable<Cabin> GetCabins()
         {
             var item = _context.GetAll();
-            if(item.Count == 0)
+            if(item.Count() == 0)
             {
                 throw new Exception("No records found");
             }

@@ -44,10 +44,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Asset> GetAssets()
+        public IQueryable<Asset> GetAssets()
         {
             var list = _context.GetAll();
-            if (list.Count == 0)
+            if (list.Count() == 0)
                 throw new Exception("There is no records");
             else return list;
         }

@@ -64,7 +64,7 @@ namespace AssetManagementConsole.FunctionHandlers
         {
             Console.Clear();
             Console.WriteLine("--------------------Allocate Seats------------------");
-            var unallocatedList = reportManager.GetUnallocatedSeatList();
+            var unallocatedList = reportManager.GetUnallocatedSeatList().ToList();
             var employeeList = employeeHandler.GetEmployeeList().Where(x => x.IsAllocated == false).ToList();
             Console.WriteLine("The unallocated seat list: ");
             foreach (var unallo in unallocatedList)
@@ -103,7 +103,7 @@ namespace AssetManagementConsole.FunctionHandlers
         {
             Console.Clear();
             Console.WriteLine("--------------------Deallocate Seats------------------");
-            var allocatedList = reportManager.GetAllocatedSeatList();
+            var allocatedList = reportManager.GetAllocatedSeatList().ToList();
             Console.WriteLine("The allocated seat list: ");
             foreach (var allo in allocatedList)
             {

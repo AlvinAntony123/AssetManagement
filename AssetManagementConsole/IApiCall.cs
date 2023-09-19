@@ -10,7 +10,7 @@ namespace AssetManagementConsole
     {
         int PostData(T data);
 
-        List<T> GetData();
+        IQueryable<T> GetData();
 
         int PatchData(T data);
     }

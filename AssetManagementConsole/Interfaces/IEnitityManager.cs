@@ -10,6 +10,6 @@ namespace AssetManagementConsole.Interfaces
     {
         int Add(T obj);
 
-        List<T> Get();
+        IQueryable<T> Get();
     }
 }

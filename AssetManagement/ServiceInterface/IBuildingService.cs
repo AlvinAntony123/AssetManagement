@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IBuildingService
     {
-        List<Building> GetBuildings();
+        IQueryable<Building> GetBuildings();
 
         int AddBuildings(BuildingDTO item);
     }

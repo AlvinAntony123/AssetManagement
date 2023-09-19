@@ -44,7 +44,7 @@ namespace AssetManagementConsole.FunctionHandlers
 
         public void GetBuildings()
         {
-            var buildingList = buildingManager.Get();
+            var buildingList = buildingManager.Get().ToList();
             if(buildingList != null)
             {
                 foreach (var building in buildingList)

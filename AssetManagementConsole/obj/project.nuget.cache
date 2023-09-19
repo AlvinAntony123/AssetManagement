@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tTfFng20qEiQKNi+L+mNLoo9ByysLm+Y9ZSNsBdptxufwELPCz1bnf9tJMCaHwJxNx03Pdyn6z690/yo0L4h/g==",
+  "dgSpecHash": "x8tOogJibhR9dlV9DozKHDr1Gn23YKBI1dLcQe5ixVhrCKJLGhIafpI71Df4SIKwIhNGwByroW6pKmXp3zPhaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagementConsole\\AssetManagementConsole.csproj",
+  "projectFilePath": "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagementConsole\\AssetManagementConsole.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alvinas\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\alvinas\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",

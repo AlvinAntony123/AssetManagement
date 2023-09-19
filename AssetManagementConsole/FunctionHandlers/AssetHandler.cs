@@ -19,7 +19,7 @@ namespace AssetManagementConsole.FunctionHandlers
 
         public void GetAssets()
         {
-            var assetList = assetManager.Get();
+            var assetList = assetManager.Get().ToList();
             if(assetList != null)
             {
                 Console.WriteLine("Available Assets:");

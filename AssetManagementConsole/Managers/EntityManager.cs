@@ -23,7 +23,7 @@ namespace AssetManagementConsole.Managers
             return id;
         }
 
-        public List<T> Get()
+        public IQueryable<T> Get()
         {
             var list = apiObj1.GetData();
             return list;

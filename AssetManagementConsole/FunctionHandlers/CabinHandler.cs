@@ -100,7 +100,7 @@ namespace AssetManagementConsole.FunctionHandlers
         {
             Console.Clear();
             Console.WriteLine("--------------------Deallocate Cabin------------------");
-            var allocatedList = reportManager.GetAllocatedCabinList();
+            var allocatedList = reportManager.GetAllocatedCabinList().ToList();
             Console.WriteLine("The allocated cabin list: ");
             foreach (var allo in allocatedList)
             {

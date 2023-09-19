@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IEmployeeService
     {
-        List<Employee> GetEmployees();
+        IQueryable<Employee> GetEmployees();
 
         void AddEmployees(EmployeeDTO employeeDTO);
     }

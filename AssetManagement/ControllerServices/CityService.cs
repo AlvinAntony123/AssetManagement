@@ -29,10 +29,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<City> GetCities()
+        public IQueryable<City> GetCities()
         {
             var item = _context.GetAll();
-            if (item.Count == 0) throw new Exception("No records found");
+            if (item.Count() == 0) throw new Exception("No records found");
             else return item;
         }
     }

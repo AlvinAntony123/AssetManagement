@@ -20,50 +20,50 @@ namespace AssetManagementAPI.ControllerServices
             _cabinUnallocated = cabinUnallocatedContext;
         }
 
-        public List<Overview> GetAllocatedList()
+        public IQueryable<Overview> GetAllocatedList()
         {
             var item = _Allocatedcontext.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("Cannot generate report");
             }
             else return item;
         }
 
-        public List<FacilityViewModel> GetFacilityList()
+        public IQueryable<FacilityViewModel> GetFacilityList()
         {
             var item = _facilityContext.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("Cannot generate report");
             }
             else return item;
         }
 
-        public List<UnallocatedViewModel> GetUnallocatedList()
+        public IQueryable<UnallocatedViewModel> GetUnallocatedList()
         {
             var item = _unallocated.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("Cannot generate report");
             }
             else return item;
         }
 
-        public List<CabinAllocatedViewModel> GetCabinAllocatedList()
+        public IQueryable<CabinAllocatedViewModel> GetCabinAllocatedList()
         {
             var item = _cabinAllocated.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("Cannot generate report");
             }
             else return item;
         }
 
-        public List<CabinUnallocatedViewModel> GetCabinUnallocatedList()
+        public IQueryable<CabinUnallocatedViewModel> GetCabinUnallocatedList()
         {
             var item = _cabinUnallocated.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("Cannot generate report");
             }

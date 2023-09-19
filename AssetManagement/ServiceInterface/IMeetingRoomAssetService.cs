@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IMeetingRoomAssetService
     {
-        List<MeetingRoomAsset> GetMeetingRoomAssets();
+        IQueryable<MeetingRoomAsset> GetMeetingRoomAssets();
 
         void AddMeetingRoomAssests(MeetingRoomAssetDTO meetingRoomAsset);
 

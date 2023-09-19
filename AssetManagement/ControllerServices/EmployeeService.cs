@@ -31,10 +31,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Employee> GetEmployees()
+        public IQueryable<Employee> GetEmployees()
         {
             var item = _context.GetAll();
-            if(item == null)
+            if(item.Count() == 0)
             {
                 throw new Exception("No records found");
             }

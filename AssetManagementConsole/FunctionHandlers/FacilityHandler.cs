@@ -23,7 +23,7 @@ namespace AssetManagementConsole.FunctionHandlers
             reportManager = new ReportManager<FacilityViewModel>("api/report/facilitylist");
         }
 
-        public List<FacilityViewModel> GetFacilityList()
+        public IQueryable<FacilityViewModel> GetFacilityList()
         {
             return reportManager.GenerateReport();
         }
@@ -31,7 +31,7 @@ namespace AssetManagementConsole.FunctionHandlers
         public void GetFacilities()
         {
             Console.WriteLine("Facility List:");
-            var facilityList = GetFacilityList();
+            var facilityList = GetFacilityList().ToList();
             if(facilityList != null)
             {
                 foreach (FacilityViewModel facility in facilityList)

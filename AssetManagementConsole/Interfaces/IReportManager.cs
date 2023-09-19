@@ -8,6 +8,6 @@ namespace AssetManagementConsole.Interfaces
 {
     internal interface IReportManager<T>
     {
-        List<T> GenerateReport();
+        IQueryable<T> GenerateReport();
     }
 }

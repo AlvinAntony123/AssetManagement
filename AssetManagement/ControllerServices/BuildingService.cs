@@ -38,10 +38,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Building> GetBuildings()
+        public IQueryable<Building> GetBuildings()
         {
             var item = _context.GetAll();
-            if (item.Count == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("No records found");
             }

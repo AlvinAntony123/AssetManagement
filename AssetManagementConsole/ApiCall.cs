@@ -23,7 +23,7 @@ namespace AssetManagementConsole
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7176/");
         }
-        public List<T> GetData()
+        public IQueryable<T> GetData()
         {
             var response = client.GetAsync(endPoint).Result;
             if (response.StatusCode == HttpStatusCode.NoContent)
@@ -34,7 +34,7 @@ namespace AssetManagementConsole
             else if (response.IsSuccessStatusCode)
             {
                 var responseContent = response.Content.ReadAsStringAsync().Result;
-                var getResponse = JsonConvert.DeserializeObject<List<T>>(responseContent);
+                var getResponse = JsonConvert.DeserializeObject<List<T>>(responseContent).AsQueryable();
                 return getResponse;
             }
             else

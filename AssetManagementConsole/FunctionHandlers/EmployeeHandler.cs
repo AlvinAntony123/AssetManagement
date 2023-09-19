@@ -19,7 +19,7 @@ namespace AssetManagementConsole.FunctionHandlers
             departmentHandler = new DepartmentHandler();
         }
 
-        public List<Employee> GetEmployeeList()
+        public IQueryable<Employee> GetEmployeeList()
         {
             return employeeManager.Get();
         }

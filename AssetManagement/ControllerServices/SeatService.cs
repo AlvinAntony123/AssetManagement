@@ -16,10 +16,10 @@ namespace AssetManagementAPI.ControllerServices
             _employeeContext = employeeContext;
         }
 
-        public List<Seat> GetSeats()
+        public IQueryable<Seat> GetSeats()
         {
             var item = _context.GetAll();
-            if (item == null)
+            if (item.Count() == 0)
             {
                 throw new Exception("No records found");
             }

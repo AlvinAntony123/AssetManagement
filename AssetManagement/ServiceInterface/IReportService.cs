@@ -4,14 +4,14 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IReportService
     {
-        List<Overview> GetAllocatedList();
+        IQueryable<Overview> GetAllocatedList();
 
-        List<UnallocatedViewModel> GetUnallocatedList();
+        IQueryable<UnallocatedViewModel> GetUnallocatedList();
 
-        List<FacilityViewModel> GetFacilityList();
+        IQueryable<FacilityViewModel> GetFacilityList();
 
-        List<CabinAllocatedViewModel> GetCabinAllocatedList();
+        IQueryable<CabinAllocatedViewModel> GetCabinAllocatedList();
 
-        List<CabinUnallocatedViewModel> GetCabinUnallocatedList();
+        IQueryable<CabinUnallocatedViewModel> GetCabinUnallocatedList();
     }
 }

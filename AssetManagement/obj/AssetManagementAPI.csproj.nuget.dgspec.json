@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj": {}
+    "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj": {
+    "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj",
+        "projectUniqueName": "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj",
         "projectName": "AssetManagementAPI",
-        "projectPath": "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj",
+        "projectPath": "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagement\\AssetManagementAPI.csproj",
         "packagesPath": "C:\\Users\\alvinas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alvinas\\source\\repos\\AssetManagement\\AssetManagement\\obj\\",
+        "outputPath": "C:\\Users\\alvinas\\Documents\\AssetManagement\\AssetManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

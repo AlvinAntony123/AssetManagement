@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IFacilityService
     {
-        List<Facility> GetFacilities();
+        IQueryable<Facility> GetFacilities();
 
         void AddFacilities(FacilityDTO facility);
     }

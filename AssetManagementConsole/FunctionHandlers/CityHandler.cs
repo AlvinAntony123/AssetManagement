@@ -40,7 +40,7 @@ namespace AssetManagementConsole.FunctionHandlers
 
         public void GetCities()
         {
-            var cityList = cityManager.Get();
+            var cityList = cityManager.Get().ToList();
             if(cityList != null)
             {
                 foreach (var city in cityList)

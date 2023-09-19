@@ -31,10 +31,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Facility> GetFacilities()
+        public IQueryable<Facility> GetFacilities()
         {
             var item = _context.GetAll();
-            if (item.Count == 0) throw new Exception("No records found");
+            if (item.Count() == 0) throw new Exception("No records found");
             else return _context.GetAll();
         }
     }

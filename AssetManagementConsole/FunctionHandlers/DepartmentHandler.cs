@@ -19,7 +19,7 @@ namespace AssetManagementConsole.FunctionHandlers
 
         public void GetDepartments()
         {
-            var deptList = deptManager.Get();
+            var deptList = deptManager.Get().ToList();
             if(deptList != null)
             {
                 Console.WriteLine("Department List:");

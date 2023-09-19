@@ -27,10 +27,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<Department> GetDepartments()
+        public IQueryable<Department> GetDepartments()
         {
             var item = _context.GetAll();
-            if(item == null)
+            if(item.Count() == 0)
             {
                 throw new Exception("No records found");
             }else

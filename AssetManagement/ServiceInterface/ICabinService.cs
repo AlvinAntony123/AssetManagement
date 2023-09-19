@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface ICabinService
     {
-        List<Cabin> GetCabins();
+        IQueryable<Cabin> GetCabins();
 
         void AddCabin(CabinDTO cabin);
 

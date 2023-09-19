@@ -30,10 +30,10 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public List<MeetingRoom> GetMeetingRooms()
+        public IQueryable<MeetingRoom> GetMeetingRooms()
         {
             var item =  _context.GetAll();
-            if (item == null)
+            if (item.Count() == 0)
             {
                 throw new Exception("No records found");
             }

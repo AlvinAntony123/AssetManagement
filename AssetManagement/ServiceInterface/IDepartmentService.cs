@@ -5,7 +5,7 @@ namespace AssetManagementAPI.ServiceInterface
 {
     public interface IDepartmentService
     {
-        List<Department> GetDepartments();
+        IQueryable<Department> GetDepartments();
 
         void AddDepartment(DepartmentDTO departmentDTO);
     }
