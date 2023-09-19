@@ -28,17 +28,18 @@ namespace AssetManagementAPI.Controllers
             }
         }
         [HttpPost]
-        public IActionResult AddItem(SeatDTO seatDTO)
+        public IActionResult AddItem(int count, int facilityId, int currCount)
         {
             try
             {
-                _context.AddSeat(seatDTO);
+                _context.AddSeat(count, facilityId, currCount);
                 return Ok();
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPatch("allocate")]
         public IActionResult Allocate(SeatAllocateDTO seat)
         {

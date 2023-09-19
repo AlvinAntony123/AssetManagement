@@ -10,6 +10,8 @@ namespace AssetManagementConsole
     {
         int PostData(T data);
 
+        int PostMany(int count, int facilityId, int currCount);
+
         IQueryable<T> GetData();
 
         int PatchData(T data);

@@ -10,6 +10,8 @@ namespace AssetManagementConsole.Interfaces
     {
         int Add(T obj);
 
+        int AddMany(int count, int facilityId, int currCount);
+
         IQueryable<T> Get();
     }
 }

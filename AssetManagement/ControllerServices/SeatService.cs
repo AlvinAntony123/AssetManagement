@@ -29,21 +29,25 @@ namespace AssetManagementAPI.ControllerServices
             }
         }
 
-        public void AddSeat(SeatDTO dtoItem)
+        public void AddSeat(int count, int facilityId, int currCount)
         {
-            if(dtoItem.FacilityId == 0)
+            if(facilityId == 0)
             {
                 throw new Exception("Cannot add seats");
             }
             else
             {
-                var seat = new Seat
+               for(var i=0; i<count; i++)
                 {
-                    SeatName = dtoItem.SeatName,
-                    FacilityId = dtoItem.FacilityId,
-                    EmployeeId = null
-                };
-                _context.Add(seat);
+                    var seatName = "S" + currCount++;
+                    var seat = new Seat
+                    {
+                        SeatName = seatName,
+                        FacilityId = facilityId,
+                        EmployeeId = null
+                    };
+                    _context.Add(seat);
+                }
                 _context.Save();
             }
         }

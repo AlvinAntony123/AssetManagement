@@ -28,5 +28,11 @@ namespace AssetManagementConsole.Managers
             var list = apiObj1.GetData();
             return list;
         }
+
+        public int AddMany(int count, int facilityId, int currCount)
+        {
+            var id = apiObj1.PostMany(count, facilityId, currCount);
+            return id;
+        }
     }
 }

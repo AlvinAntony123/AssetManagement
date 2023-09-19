@@ -36,26 +36,13 @@ namespace AssetManagementConsole.FunctionHandlers
             var noOfSeats = Convert.ToInt32(Console.ReadLine());
             var seatListCount = seatManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
             int seatCount = seatListCount + 1;
-            int requestNo = 0;
-            for (int i = 0; i < noOfSeats; i++)
+            int requestNo = seatManager.AddMany(noOfSeats, facilityId, seatCount);
+            if(requestNo == -1)
             {
-                var seatName = "S" + seatCount++;
-                var seat = new Seat
-                {
-                    FacilityId = facilityId,
-                    SeatName = seatName
-                };
-                requestNo = seatManager.Add(seat);
-                if(requestNo == -1)
-                {
-                    Console.WriteLine("Could not add seat");
-                    break;
-                }
+                Console.WriteLine("Could not add seat");
             }
-            if(requestNo != -1)
-            {
+            else
                 Console.WriteLine("Your seats has been added successfully");
-            }
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
         }

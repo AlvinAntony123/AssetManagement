@@ -94,5 +94,30 @@ namespace AssetManagementConsole
 
             return 0;
         }
+
+        public int PostMany(int count, int facilityId, int currCount)
+        {
+            var newEndpoint = endPoint + $"?count={count}&&facilityId={facilityId}&&currCount={currCount}";
+
+            var response = client.PostAsync(newEndpoint, null).Result;
+
+            var responseContent = response.Content.ReadAsStringAsync().Result;
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                Console.WriteLine(responseContent);
+                return -1;
+            }
+
+            else
+            {
+
+                if (int.TryParse(responseContent, out int res))
+                {
+                    return res;
+                }
+                return 0;
+            }
+        }
     }
 }

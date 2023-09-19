@@ -6,7 +6,7 @@ namespace AssetManagementAPI.ServiceInterface
     public interface ISeatService
     {
         IQueryable<Seat> GetSeats();
-        void AddSeat(SeatDTO seatDTO);
+        void AddSeat(int count, int facilityId, int currCount);
 
         void AllocateSeat(int seatId, int employeeId);
 
