@@ -7,7 +7,7 @@ namespace AssetManagementAPI.ServiceInterface
     {
         IQueryable<Cabin> GetCabins();
 
-        void AddCabin(CabinDTO cabin);
+        void AddCabin(int count, int facilityId, int currCount);
 
         void AllocateCabin(int cabinId, int employeeId);
 

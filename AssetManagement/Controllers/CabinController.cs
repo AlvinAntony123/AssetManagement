@@ -32,11 +32,11 @@ namespace AssetManagementAPI.Controllers
 
         [HttpPost]
 
-        public IActionResult AddItem(CabinDTO dtoItem)
+        public IActionResult AddItem(int count, int facilityId, int currCount)
         {
             try
             {
-                _context.AddCabin(dtoItem);
+                _context.AddCabin(count, facilityId, currCount);
                 return Ok();
             }catch (Exception ex)
             {

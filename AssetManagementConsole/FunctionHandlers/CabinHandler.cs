@@ -36,25 +36,15 @@ namespace AssetManagementConsole.FunctionHandlers
             var noOfCabins = Convert.ToInt32(Console.ReadLine());
             var cabinListCount = cabinManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
             int cabinCount = cabinListCount + 1;
-            int requestNo = 0;
-            for (int i = 0; i < noOfCabins; i++)
-            {
-                var cabinName = "C" + cabinCount++;
-                var cabin = new Cabin
-                {
-                    FacilityId = facilityId,
-                    CabinName = cabinName,
-                };
-                requestNo = cabinManager.Add(cabin);
-                if (requestNo == -1)
-                    break;
-            }
-            if(requestNo != -1)
+            int requestNo = cabinManager.AddMany(noOfCabins,facilityId,cabinCount);
+            if (requestNo != -1)
             {
                 Console.WriteLine("Your cabins has been added successfully");
-                Console.WriteLine("Press any key to continue");
-                Console.ReadLine();
             }
+            else
+                Console.WriteLine("Error in adding cabins");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
         }
 
         public void AllocateCabin()

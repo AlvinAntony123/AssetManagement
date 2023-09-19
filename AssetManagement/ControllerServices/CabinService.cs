@@ -15,18 +15,22 @@ namespace AssetManagementAPI.ControllerServices
             _context =  context;
             _employeeContext = employeeContext;
         }
-        public void AddCabin(CabinDTO cabin)
+        public void AddCabin(int count, int facilityId, int currCount)
         {
-            if (cabin.CabinName == "string" || cabin.FacilityId == 0) throw new Exception("Cannot add record");
+            if (facilityId == 0) throw new Exception("Cannot add record");
             else
             {
-                var item = new Cabin
+                for(var i=0; i<count; i++)
                 {
-                    CabinName = cabin.CabinName,
-                    FacilityId = cabin.FacilityId,
-                    EmployeeId = null
-                };
-                _context.Add(item);
+                    var cabinName = "C" + currCount++;
+                    var item = new Cabin
+                    {
+                        CabinName = cabinName,
+                        FacilityId = facilityId,
+                        EmployeeId = null
+                    };
+                    _context.Add(item);
+                }
                 _context.Save();
             }
         }
