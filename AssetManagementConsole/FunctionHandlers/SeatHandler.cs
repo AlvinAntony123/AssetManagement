@@ -67,13 +67,7 @@ namespace AssetManagementConsole.FunctionHandlers
             }
             Console.WriteLine("Enter the employee id to allocate: ");
             var empId = Convert.ToInt32(Console.ReadLine());
-
-            var seat = new SeatAllocateDTO
-            {
-                EmployeeId = empId,
-                SeatId = seatId
-            };
-            var requestNo = seatAllocationManager.Allocate(seat);
+            var requestNo = seatAllocationManager.Allocate(seatId, empId);
             if(requestNo != -1)
             {
                 Console.WriteLine("Seat allocated successfully successfully");
@@ -99,12 +93,7 @@ namespace AssetManagementConsole.FunctionHandlers
             Console.WriteLine("Enter the seat id you want to deallocate: ");
             var seatId = Convert.ToInt32(Console.ReadLine());
 
-            var seat = new SeatAllocateDTO
-            {
-                SeatId = seatId,
-            };
-
-            var requestNo = seatAllocationManager.Deallocate(seat);
+            var requestNo = seatAllocationManager.Allocate(seatId, 0);
             if(requestNo != -1 )
             {
                 Console.WriteLine("Seat deallocated successfully successfully");

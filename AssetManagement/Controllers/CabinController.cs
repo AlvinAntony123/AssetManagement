@@ -44,12 +44,17 @@ namespace AssetManagementAPI.Controllers
             }
         }
 
-        [HttpPatch("allocate")]
-        public IActionResult Allocate(CabinAllocateDTO item)
+        [HttpPatch]
+        [Route("{id}")]
+        public IActionResult Allocate(int id, int empId)
         {
             try
             {
-                _context.AllocateCabin(item.CabinId, (int)item.EmployeeId);
+                if(empId != 0)
+                    _context.AllocateCabin(id, empId);
+                else
+                    _context.DeallocateCabin(id);
+
                 return Ok();
             }catch(AssetAllocatedException ex)
             {
@@ -60,19 +65,6 @@ namespace AssetManagementAPI.Controllers
                 return NotFound(ex.Message);
             }
             catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPatch("deallocate")]
-        public IActionResult Deallocate(CabinAllocateDTO item)
-        {
-            try
-            {
-                _context.DeallocateCabin(item.CabinId);
-                return Ok();
-            }catch( Exception ex)
             {
                 return BadRequest(ex.Message);
             }

@@ -40,12 +40,16 @@ namespace AssetManagementAPI.Controllers
             }
         }
 
-        [HttpPatch("allocate")]
-        public IActionResult Allocate(SeatAllocateDTO seat)
+        [HttpPatch]
+        [Route("{id}")]
+        public IActionResult Allocate(int id, int empId)
         {
             try
             {
-                _context.AllocateSeat(seat.SeatId, seat.EmployeeId);
+                if (empId != 0)
+                    _context.AllocateSeat(id, empId);
+                else
+                    _context.DeallocateSeat(id);
                 return Ok();
             }catch(EmployyeNotFoundException ex)
             {
@@ -55,19 +59,6 @@ namespace AssetManagementAPI.Controllers
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPatch("deallocate")]
-        public IActionResult Deallocate(SeatAllocateDTO seat)
-        {
-            try
-            {
-                _context.DeallocateSeat(seat.SeatId);
-                return Ok();
-            }catch( Exception ex)
             {
                 return BadRequest(ex.Message);
             }

@@ -14,6 +14,6 @@ namespace AssetManagementConsole
 
         IQueryable<T> GetData();
 
-        int PatchData(T data);
+        int PatchData();
     }
 }

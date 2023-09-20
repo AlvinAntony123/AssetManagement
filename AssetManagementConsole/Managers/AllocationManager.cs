@@ -14,18 +14,11 @@ namespace AssetManagementConsole.Managers
         {
             endPoint = ep;
         }
-        public int Allocate(T obj)
+        public int Allocate(int assetId, int empId)
         {
-            var newEndpoint = endPoint + "/allocate";
+            var newEndpoint = endPoint + $"/{assetId}?empId={empId}";
             IApiCall<T> newObj = new ApiCall<T>(newEndpoint);
-            return newObj.PatchData(obj);
-        }
-
-        public int Deallocate(T obj)
-        {
-            var newEndpoint = endPoint + "/deallocate";
-            IApiCall<T> newObj = new ApiCall<T>(newEndpoint);
-            return newObj.PatchData(obj);
+            return newObj.PatchData();
         }
     }
 }

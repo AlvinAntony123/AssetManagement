@@ -67,13 +67,7 @@ namespace AssetManagementConsole.FunctionHandlers
             }
             Console.WriteLine("Enter the employee id to allocate: ");
             var empId = Convert.ToInt32(Console.ReadLine());
-
-            var cabin = new CabinAllocateDTO
-            {
-                EmployeeId = empId,
-                CabinId = cabinId
-            };
-            var requestNo = cabinAllocationManager.Allocate(cabin);
+            var requestNo = cabinAllocationManager.Allocate(cabinId, empId);
             if(requestNo != -1)
             {
                 Console.WriteLine("Cabin allocated successfully successfully");
@@ -99,12 +93,7 @@ namespace AssetManagementConsole.FunctionHandlers
             Console.WriteLine("Enter the cabin id you want to deallocate: ");
             var cabinId = Convert.ToInt32(Console.ReadLine());
 
-            var cabin = new CabinAllocateDTO
-            {
-                CabinId = cabinId,
-            };
-
-            var requestNo = cabinAllocationManager.Deallocate(cabin);
+            var requestNo = cabinAllocationManager.Allocate(cabinId, 0);
             if(requestNo != -1 )
             {
                 Console.WriteLine("Cabin deallocated successfully successfully");

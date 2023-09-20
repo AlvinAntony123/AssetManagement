@@ -70,13 +70,9 @@ namespace AssetManagementConsole
             }
         }
 
-        public int PatchData(T data)
+        public int PatchData()
         {
-            var json = JsonSerializer.Serialize(data);
-
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = client.PatchAsync(endPoint, content).Result;
+            var response = client.PatchAsync(endPoint, null).Result;
 
             var responseContent = response.Content.ReadAsStringAsync().Result;
 

@@ -8,8 +8,6 @@ namespace AssetManagementConsole.Interfaces
 {
     public interface IAllocationManager<T> where T : class
     {
-        int Allocate(T obj);
-
-        int Deallocate(T obj);
+        int Allocate(int assetId, int empId);
     }
 }
