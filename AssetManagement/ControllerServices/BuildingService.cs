@@ -15,28 +15,26 @@ namespace AssetManagementAPI.ControllerServices
         }
         public int AddBuildings(BuildingDTO item)
         {
-            if(item.BuildingName == "string" || item.BuildingAbbrv == "string")
+            if (item.BuildingName == "string" || item.BuildingAbbrv == "string")
             {
                 throw new Exception("Cannot add record");
             }
-            else
+            var buildings = _context.GetAll();
+            foreach (var b in buildings)
             {
-                var buildings = _context.GetAll();
-                foreach(var b in buildings)
-                {
-                    if (b.BuildingAbbrv == item.BuildingAbbrv)
-                        throw new SameAbbreviationException();
-                }
-                var building = new Building
-                {
-                    BuildingName = item.BuildingName,
-                    BuildingAbbrv = item.BuildingAbbrv,
-                };
-                _context.Add(building);
-                _context.Save();
-                return building.BuildingId;
+                if (b.BuildingAbbrv == item.BuildingAbbrv)
+                    throw new SameAbbreviationException();
             }
+            var building = new Building
+            {
+                BuildingName = item.BuildingName,
+                BuildingAbbrv = item.BuildingAbbrv,
+            };
+            _context.Add(building);
+            _context.Save();
+            return building.BuildingId;
         }
+
 
         public IQueryable<Building> GetBuildings()
         {

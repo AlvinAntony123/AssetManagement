@@ -14,31 +14,29 @@ namespace AssetManagementAPI.ControllerServices
         }
         public void AddEmployees(EmployeeDTO employeeDTO)
         {
-            if(employeeDTO.EmployeeName == "string" || employeeDTO.DepartmentId == 0)
+            if (employeeDTO.EmployeeName == "string" || employeeDTO.DepartmentId == 0)
             {
                 throw new Exception("Cannot add employee");
             }
-            else
+            var item = new Employee
             {
-                var item = new Employee
-                {
-                    EmployeeName = employeeDTO.EmployeeName,
-                    DepartmentId = employeeDTO.DepartmentId,
-                    IsAllocated = false
-                };
-                _context.Add(item);
-                _context.Save();
-            }
+                EmployeeName = employeeDTO.EmployeeName,
+                DepartmentId = employeeDTO.DepartmentId,
+                IsAllocated = false
+            };
+            _context.Add(item);
+            _context.Save();
+
         }
 
         public IQueryable<Employee> GetEmployees()
         {
             var item = _context.GetAll();
-            if(item.Count() == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("No records found");
             }
-            else { return item; }
+            return item;
         }
     }
 }

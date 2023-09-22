@@ -16,25 +16,24 @@ namespace AssetManagementAPI.ControllerServices
         {
             if (departmentDTO.DepartmentName == "string")
                 throw new Exception("Cannot add department");
-            else
+            var item = new Department
             {
-                var item = new Department
-                {
-                    DepartmentName = departmentDTO.DepartmentName,
-                };
-                _context.Add(item);
-                _context.Save();
-            }
+                DepartmentName = departmentDTO.DepartmentName,
+            };
+            _context.Add(item);
+            _context.Save();
+
         }
 
         public IQueryable<Department> GetDepartments()
         {
             var item = _context.GetAll();
-            if(item.Count() == 0)
+            if (item.Count() == 0)
             {
                 throw new Exception("No records found");
-            }else
-                return item;
+            }
+
+            return item;
         }
     }
 }

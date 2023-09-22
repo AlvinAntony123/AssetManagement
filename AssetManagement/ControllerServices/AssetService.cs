@@ -24,32 +24,26 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Record cannot be added");
             }
-            else
+            var currAsset = _context.GetAll().Where(x => x.AssetName == asset.AssetName).FirstOrDefault();
+            if (currAsset != null)
+                throw new ObjectAlreadyExistException();
+            var item = new Asset
             {
-                var currAsset = _context.GetAll().Where(x => x.AssetName == asset.AssetName).FirstOrDefault();
-                if (currAsset == null)
-                {
-                    var item = new Asset
-                    {
-                        AssetName = asset.AssetName
-                    };
-                    _context.Add(item);
-                    _context.Save();
-                    return item.AssetId;
-                }
-                else
-                {
-                    throw new ObjectAlreadyExistException();
-                };
-            }
+                AssetName = asset.AssetName
+            };
+            _context.Add(item);
+            _context.Save();
+            return item.AssetId;
+
         }
+
 
         public IQueryable<Asset> GetAssets()
         {
             var list = _context.GetAll();
             if (list.Count() == 0)
                 throw new Exception("There is no records");
-            else return list;
+            return list;
         }
     }
 }

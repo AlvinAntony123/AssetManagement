@@ -93,7 +93,7 @@ namespace AssetManagementConsole.FunctionHandlers
             Console.WriteLine("Enter the cabin id you want to deallocate: ");
             var cabinId = Convert.ToInt32(Console.ReadLine());
 
-            var requestNo = cabinAllocationManager.Allocate(cabinId, 0);
+            var requestNo = cabinAllocationManager.Deallocate(cabinId);
             if(requestNo != -1 )
             {
                 Console.WriteLine("Cabin deallocated successfully successfully");

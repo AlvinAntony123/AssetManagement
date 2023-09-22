@@ -9,5 +9,6 @@ namespace AssetManagementConsole.Interfaces
     public interface IAllocationManager<T> where T : class
     {
         int Allocate(int assetId, int empId);
+        int Deallocate(int assetId);
     }
 }

@@ -27,7 +27,7 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot generate report");
             }
-            else return item;
+            return item;
         }
 
         public IQueryable<FacilityViewModel> GetFacilityList()
@@ -37,7 +37,7 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot generate report");
             }
-            else return item;
+            return item;
         }
 
         public IQueryable<UnallocatedViewModel> GetUnallocatedList()
@@ -47,7 +47,7 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot generate report");
             }
-            else return item;
+            return item;
         }
 
         public IQueryable<CabinAllocatedViewModel> GetCabinAllocatedList()
@@ -57,7 +57,7 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot generate report");
             }
-            else return item;
+            return item;
         }
 
         public IQueryable<CabinUnallocatedViewModel> GetCabinUnallocatedList()
@@ -67,7 +67,7 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot generate report");
             }
-            else return item;
+            return item;
         }
     }
 }

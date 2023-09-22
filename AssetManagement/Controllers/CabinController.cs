@@ -24,7 +24,8 @@ namespace AssetManagementAPI.Controllers
             try
             {
                 return Ok(_context.GetCabins());
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return NoContent();
             }
@@ -38,33 +39,47 @@ namespace AssetManagementAPI.Controllers
             {
                 _context.AddCabin(count, facilityId, currCount);
                 return Ok();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPatch]
-        [Route("{id}")]
+        [Route("{id}/allocations")]
         public IActionResult Allocate(int id, int empId)
         {
             try
             {
-                if(empId != 0)
-                    _context.AllocateCabin(id, empId);
-                else
-                    _context.DeallocateCabin(id);
+                _context.AllocateCabin(id, empId);
 
                 return Ok();
-            }catch(AssetAllocatedException ex)
+            }
+            catch (AssetAllocatedException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch(EmployyeNotFoundException ex)
+            catch (EmployyeNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPatch]
+        [Route("{id}/deallocations")]
+        public IActionResult Deallocate(int id)
+        {
+            try
+            {
+                _context.DeallocateCabin(id);
+                return Ok();
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

@@ -16,28 +16,26 @@ namespace AssetManagementAPI.ControllerServices
         {
             if (dtoItem.FacilityId == 0)
                 throw new Exception("Cannot add meeting room");
-            else
+            var item = new MeetingRoom
             {
-                var item = new MeetingRoom
-                {
-                    MeetingRoomName = dtoItem.MeetingRoomName,
-                    FacilityId = dtoItem.FacilityId,
-                    TotalSeats = dtoItem.TotalSeats,
-                };
-                _context.Add(item);
-                _context.Save();
-                return item.MeetingRoomId;
-            }
+                MeetingRoomName = dtoItem.MeetingRoomName,
+                FacilityId = dtoItem.FacilityId,
+                TotalSeats = dtoItem.TotalSeats,
+            };
+            _context.Add(item);
+            _context.Save();
+            return item.MeetingRoomId;
+
         }
 
         public IQueryable<MeetingRoom> GetMeetingRooms()
         {
-            var item =  _context.GetAll();
+            var item = _context.GetAll();
             if (item.Count() == 0)
             {
                 throw new Exception("No records found");
             }
-            else return item;
+            return item;
         }
     }
 }

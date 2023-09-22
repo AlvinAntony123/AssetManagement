@@ -93,7 +93,7 @@ namespace AssetManagementConsole.FunctionHandlers
             Console.WriteLine("Enter the seat id you want to deallocate: ");
             var seatId = Convert.ToInt32(Console.ReadLine());
 
-            var requestNo = seatAllocationManager.Allocate(seatId, 0);
+            var requestNo = seatAllocationManager.Deallocate(seatId);
             if(requestNo != -1 )
             {
                 Console.WriteLine("Seat deallocated successfully successfully");

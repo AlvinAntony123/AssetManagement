@@ -22,7 +22,8 @@ namespace AssetManagementAPI.Controllers
             try
             {
                 return Ok(_context.GetSeats());
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return NoContent();
             }
@@ -34,29 +35,44 @@ namespace AssetManagementAPI.Controllers
             {
                 _context.AddSeat(count, facilityId, currCount);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPatch]
-        [Route("{id}")]
+        [Route("{id}/allocations")]
         public IActionResult Allocate(int id, int empId)
         {
             try
             {
-                if (empId != 0)
-                    _context.AllocateSeat(id, empId);
-                else
-                    _context.DeallocateSeat(id);
+                _context.AllocateSeat(id, empId);
                 return Ok();
-            }catch(EmployyeNotFoundException ex)
+            }
+            catch (EmployyeNotFoundException ex)
             {
                 return NotFound(ex.Message);
-            }catch(AssetAllocatedException ex)
+            }
+            catch (AssetAllocatedException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPatch]
+        [Route("{id}/deallocations")]
+        public IActionResult Deallocate(int id)
+        {
+            try
+            {
+                _context.DeallocateSeat(id);
+                return Ok();
             }
             catch (Exception ex)
             {

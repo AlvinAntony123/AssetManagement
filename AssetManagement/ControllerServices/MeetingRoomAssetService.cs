@@ -14,44 +14,40 @@ namespace AssetManagementAPI.ControllerServices
         }
         public void AddMeetingRoomAssests(MeetingRoomAssetDTO dtoItem)
         {
-            if(dtoItem.MeetingRoomId == 0 || dtoItem.AssetId == 0)
+            if (dtoItem.MeetingRoomId == 0 || dtoItem.AssetId == 0)
             {
                 throw new Exception("Cannot add asset to meeting room");
             }
-            else
+            var item = new MeetingRoomAsset
             {
-                var item = new MeetingRoomAsset
-                {
-                    MeetingRoomId = dtoItem.MeetingRoomId,
-                    AssetId = dtoItem.AssetId,
-                    NoOfItems = dtoItem.NoOfItems,
+                MeetingRoomId = dtoItem.MeetingRoomId,
+                AssetId = dtoItem.AssetId,
+                NoOfItems = dtoItem.NoOfItems,
 
-                };
-                _context.Add(item);
-                _context.Save();
-            }
+            };
+            _context.Add(item);
+            _context.Save();
+
         }
 
         public IQueryable<MeetingRoomAsset> GetMeetingRoomAssets()
         {
             var item = _context.GetAll();
             if (item.Count() == 0) { throw new Exception("No records found"); }
-            else return item;
+            return item;
         }
 
         public void UpdateAsset(MeetingRoomAsset item)
         {
-            if(item.MeetingRoomAssetId == 0)
+            if (item.MeetingRoomAssetId == 0)
                 throw new Exception("Cannot update asset number");
-            else
+            var currMeetingAsset = _context.GetById(item.MeetingRoomAssetId);
+            if (currMeetingAsset != null)
             {
-                var currMeetingAsset = _context.GetById(item.MeetingRoomAssetId);
-                if (currMeetingAsset != null)
-                {
-                    currMeetingAsset.NoOfItems = item.NoOfItems;
-                }
-                _context.Save();
+                currMeetingAsset.NoOfItems = item.NoOfItems;
             }
+            _context.Save();
+
         }
     }
 }

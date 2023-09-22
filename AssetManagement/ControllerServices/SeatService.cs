@@ -23,102 +23,79 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("No records found");
             }
-            else
-            {
-                return item;
-            }
+            return item;
+
         }
 
         public void AddSeat(int count, int facilityId, int currCount)
         {
-            if(facilityId == 0)
+            if (facilityId == 0)
             {
                 throw new Exception("Cannot add seats");
             }
-            else
+            for (var i = 0; i < count; i++)
             {
-               for(var i=0; i<count; i++)
+                var seatName = "S" + currCount++;
+                var seat = new Seat
                 {
-                    var seatName = "S" + currCount++;
-                    var seat = new Seat
-                    {
-                        SeatName = seatName,
-                        FacilityId = facilityId,
-                        EmployeeId = null
-                    };
-                    _context.Add(seat);
-                }
-                _context.Save();
+                    SeatName = seatName,
+                    FacilityId = facilityId,
+                    EmployeeId = null
+                };
+                _context.Add(seat);
             }
+            _context.Save();
+
         }
 
         public void AllocateSeat(int seatId, int employeeId)
         {
             if (seatId == 0 || employeeId == 0)
                 throw new Exception("Cannot allocate seat");
-            else
-            {
-                var seat = _context.GetById(seatId);
-                if(seat == null)
-                {
-                    throw new Exception("Seat does not exist");
-                }
-                else
-                {
-                    if (seat.EmployeeId == null)
-                    {
-                        var emp = _employeeContext.GetById(employeeId);
-                        if (emp != null)
-                        {
-                            if(emp.IsAllocated == false)
-                            {
-                                seat.EmployeeId = employeeId;
-                                emp.IsAllocated = true;
-                                _employeeContext.Save();
-                            }
-                            else
-                            {
-                                throw new Exception("Employee already allocated.");
-                            }
-                        }
-                        else throw new EmployyeNotFoundException();
-                    }
-                    else
-                    {
-                        throw new AssetAllocatedException();
-                    }
-                }
-                _context.Save();
-            }
+
+            var seat = _context.GetById(seatId);
+
+            if (seat == null)
+                throw new Exception("Seat does not exist");
+
+            if (seat.EmployeeId != null)
+                throw new AssetAllocatedException();
+
+            var emp = _employeeContext.GetById(employeeId);
+
+            if (emp == null)
+                throw new EmployyeNotFoundException();
+
+            if (emp.IsAllocated != false)
+                throw new Exception("Employee already allocated.");
+
+            seat.EmployeeId = employeeId;
+            emp.IsAllocated = true;
+            _employeeContext.Save();
+
+            _context.Save();
+
         }
 
         public void DeallocateSeat(int seatId)
         {
             if (seatId == 0)
                 throw new Exception("Cannot deallocate seat");
-            else
-            {
-                var seat = _context.GetById(seatId);
-                if (seat != null)
-                {
-                    if(seat.EmployeeId == null)
-                    {
-                        throw new Exception("Seat already not allocated.");
-                    }
-                    else
-                    {
-                        var emp = _employeeContext.GetById((int)seat.EmployeeId);
-                        emp.IsAllocated = false;
-                        seat.EmployeeId = null;
-                        _employeeContext.Save();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Seat does not exist");
-                }
-                _context.Save();
-            }
+            var seat = _context.GetById(seatId);
+            if (seat == null)
+                throw new Exception("Seat does not exist");
+
+            if (seat.EmployeeId == null)
+                throw new Exception("Seat already not allocated.");
+
+            var emp = _employeeContext.GetById((int)seat.EmployeeId);
+            emp.IsAllocated = false;
+            seat.EmployeeId = null;
+            _employeeContext.Save();
+
+
+            _context.Save();
+
         }
     }
 }

@@ -69,27 +69,18 @@ namespace AssetManagementAPI.ControllerServices
             {
                 throw new Exception("Cannot deallocate");
             }
-            else
-            {
-                var currCabin = _context.GetById(cabinId);
-                if (currCabin != null)
-                {
-                    if (currCabin.EmployeeId == null)
-                        throw new Exception("Cabin already not allocated.");
-                    else
-                    {
-                        var emp = _employeeContext.GetById((int)currCabin.EmployeeId);
-                        currCabin.EmployeeId = null;
-                        emp.IsAllocated = false;
-                        _employeeContext.Save();
-                    }
-                }
-                else
-                {
-                    throw new Exception("Cabin doesn't exist");
-                }
-                _context.Save();
-            }
+            var currCabin = _context.GetById(cabinId);
+            if (currCabin == null)
+                throw new Exception("Cabin doesn't exist");
+            if (currCabin.EmployeeId == null)
+                throw new Exception("Cabin already not allocated.");
+            var emp = _employeeContext.GetById((int)currCabin.EmployeeId);
+            currCabin.EmployeeId = null;
+            emp.IsAllocated = false;
+            _employeeContext.Save();
+
+            _context.Save();
+
         }
 
         public IQueryable<Cabin> GetCabins()
